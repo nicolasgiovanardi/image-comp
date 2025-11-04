@@ -23,7 +23,7 @@ This repository implements a complete neural image compression pipeline. The key
 By training multiple models with different target bitrates, a rate–distortion (R–D) curve can be obtained:
 
 <p align="center">
-  <img src="figures/rd_curve.png" alt="Rate-Distortion Curve" width="75%">
+  <img src="figures/rd_curve.png" alt="Rate-Distortion Curve" width="50%">
 </p>
 
 ## Repository Structure
