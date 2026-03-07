@@ -23,7 +23,7 @@ This repository implements a complete neural image compression pipeline. The key
 By training multiple models with different target bitrates, a rate–distortion (R–D) curve can be obtained:
 
 <p align="center">
-  <img src="figures/rd_curve.png" alt="Rate-Distortion Curve" width="75%">
+  <img src="figures/rd_curve.png" alt="Rate-Distortion Curve" width="50%">
 </p>
 
 ## Repository Structure
@@ -38,7 +38,8 @@ By training multiple models with different target bitrates, a rate–distortion 
 │   │   ├── contextmodel.py         # Defines the 3D causal context model
 │   │   ├── quantizer.py            # Defines the soft-to-hard quantizer
 │   │   ├── saver.py                # Helper class for saving/loading checkpoints
-│   │   └── utils.py                # Utility functions (e.g., logger setup)
+│   ├── benchmark_latency.py        # Script to measure per-sample inference time on CPU
+│   ├── profile_model.py            # cProfile integration to identify model bottlenecks
 │   ├── evaluate.py                 # Script to evaluate models and plot the R-D curve
 │   ├── run_experiments.sh          # Bash script to automate training multiple models
 │   └── train.py                    # Main script for training a single model instance
@@ -83,7 +84,7 @@ You can train one instance of the model using `src/train.py`. The MNIST dataset 
     python3 src/train.py \
         --beta 0.1 \
         --h_target 1.0 \
-        --num_latent_channels 32 \
+        --cae_latent_channels 32 \
         --epochs 50
     ```
     All results, including checkpoints, logs, and sample reconstructed images, will be saved to a unique timestamped directory inside `logs/`.
